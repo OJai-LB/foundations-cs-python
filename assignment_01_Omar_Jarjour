@@ -1,0 +1,182 @@
+Q1:
+def factorial_of():
+    input_num = int(input("Give me a number to return its Factorial!!"))
+    output_str = ''
+    output_fac = 1
+    if input_num <= 0:
+        print("Make sure the number you provide is an integer and over 0...")
+        factorial_of()
+    else:
+        for i in range(1, input_num+1):
+            output_fac *= i
+            if i < input_num:
+                output_str += f'{i}*'
+            else:
+                output_str += f'{i}'
+    print(f"Input:{input_num}, Output:{output_fac}({output_str})")
+
+def main():
+    factorial_of()
+
+main()
+
+
+
+Q2:
+
+def divisors_of():
+    input_num = int(input("Give me a number to return its divisors!!"))
+    output_list = []
+    if input_num <= 0:
+        print("Make sure the number you provide is an integer and over 0...")
+        divisors_of()
+    else:
+        for i in range(1, input_num + 1):
+            if input_num % i == 0:
+                output_list.append(input_num // i)
+    output_list.reverse()
+    print(f"Input:{input_num}, Output:{output_list}")
+    divisors_of()
+
+def main():
+    divisors_of()
+
+
+main()
+
+
+Q3:
+
+
+def reverseString():
+    input_string = input("Give me a phrase to reverse: ")
+    output_string = ''
+
+    for i in range(1, len(input_string)+1 ):
+        output_string += (input_string[-i])
+    print(output_string)
+    
+
+def main():
+    reverseString()
+
+main()
+
+
+
+
+Q4:
+
+def even_list():
+    input_lst = input("Enter a couple of numbers to remove the odd, use space between them: ").split()
+    odd_lst = [x for x in input_lst if int(x) % 2 == 1]
+    even_lst = [x for x in input_lst if int(x) % 2 == 0]
+    print(f"""{even_lst} is the even list
+{odd_lst} is the odd list""")
+def main():
+    even_list()
+
+main()
+
+
+Q5:
+
+def isStrong():
+    input_string = input("Enter a strong password:")
+    upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    lower_case = 'abcdefghijklmnopqrstuvwxyz'
+    digits = '1234567890'
+    special_char = '#?!$'
+
+    has_uppercase = False
+    has_lowercase = False
+    has_digit = False
+    has_special_char = False
+
+    if len(input_string) >= 8:
+        for i in input_string:
+            if i in upper_case:
+                has_uppercase = True
+            elif i in lower_case:
+                has_lowercase = True
+            elif i in digits:
+                has_digit = True
+            elif i in special_char:
+                has_special_char = True
+
+        if has_uppercase and has_lowercase and has_digit and has_special_char:
+            print(f"Input: '{input_string}' Output: 'Strong Password' ")
+        else:
+            print(f"Input: '{input_string}' Output: 'Weak Password' ")
+            isStrong()
+    else:
+        print(f"Input: '{input_string}' Output: 'Weak Password' ")
+        isStrong()
+
+def main():
+    isStrong()
+
+main()
+
+
+
+Q7:
+
+def fsd_ex():
+    input_string = input("Enter a list of integers seperated by spaces: ").strip().split()
+    input_int_list = [int(num) for num in input_string]
+    sorted_input_int_list = sorted(input_int_list)
+
+    mean = sum(input_int_list) / len(input_int_list)
+    median = 0
+    if len(sorted_input_int_list) % 2 == 0:
+        median = (sorted_input_int_list[((len(sorted_input_int_list)) // 2) - 1]) + (sorted_input_int_list[(len(sorted_input_int_list) // 2)]) / 2
+    else:
+        median = sorted_input_int_list[(len(sorted_input_int_list)) // 2]
+
+    '''int_list_dict = {}
+    for num in sorted_input_int_list:
+        if num not in int_list_dict:
+            int_list_dict[num] = 0
+        int_list_dict[num] += 1
+    print(int_list_dict)
+
+    #sorted_dict = sorted(int_list_dict, key=lambda values: (list(int_list_dict.values())))
+    sorted_dict = dict(sorted(int_list_dict.items(), key=lambda item: list(int_list_dict.values())[list(int_list_dict.keys()).index(item[0])]))
+
+    print(sorted_dict)'''
+    #mode incompleted
+
+    range = max(sorted_input_int_list) - min(sorted_input_int_list)
+
+    variance = 0
+    for i in sorted_input_int_list:
+        variance += ((i-mean)**2)/len(sorted_input_int_list)-1
+
+    standard_deviation = variance**2
+
+    print(f'''Input: {input_int_list} Output: 
+Mean: {mean}
+Median: {median}
+Range: {range}
+Variance: {variance}
+Standard Deviation: {standard_deviation}''')
+
+def main():
+    fsd_ex()
+
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
