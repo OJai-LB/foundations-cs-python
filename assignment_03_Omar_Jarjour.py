@@ -1,0 +1,1 @@
+def GetAverageScore(data_frame):
