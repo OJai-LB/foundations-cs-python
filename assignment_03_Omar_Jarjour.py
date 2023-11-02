@@ -44,7 +44,25 @@ def RemoveStudent():
     data_frame = ChooseDataFrame()
     data_frame_content = dfs[dfs_string.index(data_frame)]
     print(f"Content of the chosen data frame:\n{data_frame_content}")
-    name = EnterName()
+    name = ChosenNameToDelete(dfs[dfs_string.index(data_frame)])
+    index_of_student = None
+    for i in data_frame_content:
+        if i["Name"] == name:
+            index_of_student = data_frame_content.index(i)
+            del dfs[dfs_string.index(data_frame)][index_of_student]
+            print("The student was deleted successfully!")
+        else:
+            print("The name entered was not found in the data frame chosen \n\t Re-enter ")
+
+#GeneralUseMethod
+def ChosenNameToDelete(data_frame):
+    name = input("Enter the name of the student to delete: ")
+    for i in data_frame:
+        if i["Name"] == name:
+            return name
+        else:
+            print("The name entered was not found! \n\t Try again..")
+            return ChosenNameToDelete(data_frame)
 
 
 #GeneralUseMethod
