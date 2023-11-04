@@ -1,3 +1,10 @@
+import random
+
+error_messages = [
+    "You had one job, choose a number from 1 to 8!!",
+    "Invalid choice. Please choose a number between 1 and 8.",
+    "Try again. Pick a number from 1 to 8."
+]
 #Choice1
 def GetAverageScore():
     data_frame = ChooseDataFrame()
@@ -171,6 +178,14 @@ def ConsistentImprovement():
         print(f'Below are the students with consistent improvement: \n{student_names} ')
     return student_names
 
+def InputChoiceVerifier():
+    input_choice = input("Enter a choice number: ")
+    if input_choice.isdigit() and 1 <= int(input_choice) <= 8:
+        return int(input_choice)
+    else:
+        print(random.choice(error_messages))
+        return InputChoiceVerifier()
+
 
 def DisplayMenu():
     print("""    
@@ -184,11 +199,27 @@ def DisplayMenu():
     8. Exit                                      |
     _____________________________________________|
     """)
-    input_choice = int(input())
+    menu_options = {
+        1: GetAverageScore,
+        2: GetYoungestStudent,
+        3: GetHighestScore,
+        4: AddStudent,
+        5: RemoveStudent,
+        6: GetCommonStudents,
+        7: ConsistentImprovement
+    }
 
-#def main():
+    while True:
+        input_choice = InputChoiceVerifier()
+        if input_choice == 8:
+            break
+        elif input_choice in menu_options:
+            menu_options[input_choice]()
 
-   # DisplayMenu()
+
+
+def main():
+    DisplayMenu()
 
 df1= [{"Name": "Omar", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmadi", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ahmad", "Age": 35, "Score": (85, 80, 100)}]
 df2 = [{"Name": "Omari", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ehab", "Age": 35, "Score": (85, 90, 100)}]
@@ -198,6 +229,5 @@ dfs = [df1, df2, df3, df4]
 dfs_string = ['df1', 'df2', 'df3', 'df4']
 #main()
 
-ConsistentImprovement()
 
-
+main()
