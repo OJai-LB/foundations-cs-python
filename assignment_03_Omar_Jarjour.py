@@ -155,13 +155,14 @@ def GetCommonStudents():
     print("2nd DF:")
     data_frame2 = ChooseDataFrameV2()
     common_student_list = []
-    print(data_frame1, data_frame2)
     for i in data_frame1:
         for j in data_frame2:
             if i["Name"] == j["Name"]:
                 #to make sure there are no repetitions, we can use dictionary key is name and value is repetition.
                 #or cast the list into a set, them, tuple, but the question didnt specify
                 common_student_list.append(i["Name"])
+    if len(common_student_list) == 0:
+        print("No common students in the chosen data frames")
     return common_student_list
 
 def ConsistentImprovement():
