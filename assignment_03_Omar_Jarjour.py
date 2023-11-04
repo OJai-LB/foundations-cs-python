@@ -190,8 +190,8 @@ def DisplayMenu():
 
    # DisplayMenu()
 
-df1= [{"Name": "Omar", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ahmad", "Age": 35, "Score": (85, 80, 100)}]
-df2 = [{"Name": "Omar", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ehab", "Age": 35, "Score": (85, 90, 100)}]
+df1= [{"Name": "Omar", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmadi", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ahmad", "Age": 35, "Score": (85, 80, 100)}]
+df2 = [{"Name": "Omari", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ehab", "Age": 35, "Score": (85, 90, 100)}]
 df3 = []
 df4 = []
 dfs = [df1, df2, df3, df4]
