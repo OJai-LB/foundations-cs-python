@@ -44,7 +44,7 @@ def RemoveStudent():
     data_frame = ChooseDataFrame()
     data_frame_content = dfs[dfs_string.index(data_frame)]
     print(f"Content of the chosen data frame:\n{data_frame_content}")
-    name = ChosenNameToDelete(dfs[dfs_string.index(data_frame)])
+    name = ChooseName(dfs[dfs_string.index(data_frame)])
     index_of_student = None
     for i in data_frame_content:
         if i["Name"] == name:
@@ -55,15 +55,25 @@ def RemoveStudent():
             print("The name entered was not found in the data frame chosen \n\t Re-enter ")
 
 #GeneralUseMethod
-def ChosenNameToDelete(data_frame):
+def ChooseName(data_frame):
     name = input("Enter the name of the student to delete: ")
     for i in data_frame:
         if i["Name"] == name:
             return name
         else:
             print("The name entered was not found! \n\t Try again..")
-            return ChosenNameToDelete(data_frame)
-
+            return ChooseName(data_frame)
+"""def ChooseNameV2(data_frame1, data_frame2):
+    name = input("Enter the name of the student to delete: ")
+    for i in data_frame1:
+        if i["Name"] == name:
+            return name
+    for i in data_frame2:
+        if i["Name"] == name:
+            return name
+        else:
+            print("The name entered was not found! \n\t Try again..")
+            return ChooseNameV2(data_frame1, data_frame2)"""
 
 #GeneralUseMethod
 def ChooseDataFrame():
@@ -74,11 +84,19 @@ def ChooseDataFrame():
         print("Data frame not found \n\t Try Again..")
         return ChooseDataFrame()
 
+def ChooseDataFrameV2():
+    choice = input(f"Choose a Data Frame: {dfs_string}: ")
+    if choice in dfs_string:
+        return dfs[dfs_string.index(choice)]
+    else:
+        print("Data frame not found \n\t Try Again..")
+        return ChooseDataFrame()
+
 
 #GeneralUseMethod
 def EnterName():
     digits = '1234567890'
-    chars = '~!@#$%^&*()+-={}[]\|/<>'
+    chars = '~!@#$%^&*()+-={}[]\ |/<>'
     name = input("Name:")
     for i in name:
         if i in chars:
@@ -124,11 +142,34 @@ def EnterScores():
     scores = int(s1), int(s2), int(s3)
     return scores
 
+def GetCommonStudents():
+    print("1st DF:")
+    data_frame1 = ChooseDataFrameV2()
+    print("2nd DF:")
+    data_frame2 = ChooseDataFrameV2()
+    common_student_list = []
+    print(data_frame1, data_frame2)
+    for i in data_frame1:
+        for j in data_frame2:
+            if i["Name"] == j["Name"]:
+                #to make sure there are no repetitions, we can use dictionary key is name and value is repetition.
+                #or cast the list into a set, them, tuple, but the question didnt specify
+                common_student_list.append(i["Name"])
+    return common_student_list
 
-
-
-
-
+def ConsistentImprovement():
+    data_frame = ChooseDataFrameV2()
+    student_name_list = []
+    for i in data_frame:
+        temp_score_list = list(i["Score"])
+        if temp_score_list[0] < temp_score_list[1] < temp_score_list[2]:
+            student_name_list.append(i["Name"])
+    student_names = tuple(set(student_name_list))
+    if len(student_names) == 0:
+        print('Their are no students with consistent improvement in this data frame.')
+    elif len(student_names) > 0:
+        print(f'Below are the students with consistent improvement: \n{student_names} ')
+    return student_names
 
 
 def DisplayMenu():
@@ -149,15 +190,14 @@ def DisplayMenu():
 
    # DisplayMenu()
 
-df1= [{"Name": "Omar", "Age": 23, "Score": (100, 100, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}]
-df2 = []
+df1= [{"Name": "Omar", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ahmad", "Age": 35, "Score": (85, 80, 100)}]
+df2 = [{"Name": "Omar", "Age": 23, "Score": (100, 90, 100)}, {"Name": "Ahmad", "Age": 101, "Score": (100, 100, 100)}, {"Name": "Ehab", "Age": 35, "Score": (85, 90, 100)}]
 df3 = []
 df4 = []
 dfs = [df1, df2, df3, df4]
 dfs_string = ['df1', 'df2', 'df3', 'df4']
 #main()
 
-
-RemoveStudent()
+ConsistentImprovement()
 
 
