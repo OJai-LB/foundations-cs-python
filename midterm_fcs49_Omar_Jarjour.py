@@ -1,4 +1,5 @@
 import random
+#the requests thingy learned from various youtube videos, download the libary via cmd pip requests install
 import requests
 
 
@@ -42,17 +43,25 @@ def Choice1OpenTab(title, url):
 #CH1
 def UrlVerifier():
     url_string_input = input("Website URL: ")
+    #verifying of the string it self for some chars criteria
     while True:
         if url_string_input[:8] == "https://" or url_string_input[:7] == "http://":
             break
         else:
             print("Make sure you are entering a valid URL!! \n\t Try again..")
             return UrlVerifier()
-    response = requests.get(url_string_input)
-    if 200 <= response.status_code < 300:
-        return url_string_input
-    else:
-        print("The URL provided isn't valid,\n\t Try again.. ")
+
+    #reference of try except and the exception thingy: https://stackoverflow.com/questions/16511337/correct-way-to-try-except-using-python-requests-module
+    #but edited it abit
+    try:
+        response = requests.get(url_string_input)
+        if 200 <= response.status_code < 300:
+            return url_string_input
+        else:
+            print("The URL provided isn't valid,\n\t Try again.. ")
+            return UrlVerifier()
+    except requests.RequestException as e:
+        print(f"Error accessing the URL: {e} \n\t Try again.. ")
         return UrlVerifier()
 
 
