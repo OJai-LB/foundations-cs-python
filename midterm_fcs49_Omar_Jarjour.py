@@ -5,6 +5,7 @@ error_messages = [
     "Invalid choice. Please choose a number between 1 and 9.",
     "Try again. Pick a number from 1 to 9."
 ]
+
 def InputChoiceVerifier():
     input_choice = input("Enter a choice number: ")
     if input_choice.isdigit() and 1 <= int(input_choice) <= 9:
@@ -25,6 +26,7 @@ def Choice1Prompt():
 def Choice1OpenTab(title, url):
     #last opened tab used in many other functions, it is the last opened tab
     chrome_window.append({title: url})
+    global last_opened_tab_index
     last_opened_tab_index = chrome_window.index({title: url})
     return
 
@@ -40,21 +42,22 @@ def UrlVerifier():
 def IndexVerifier():
     input_index = input("Choose Index: ")
     if input_index.isdigit():
-        return input_index
+        return int(input_index)
     elif input_index == "":
         return last_opened_tab_index
+    else:
         return IndexVerifier()
 
 def Choice2Prompt():
     for tab_index in range(1, len(chrome_window) + 1):
-        print(f"{tab_index}:{chrome_window[tab_index]}")
+        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
     return Choice2CloseTab(index)
 
-def Choice2CloseTab(index = ):
+def Choice2CloseTab(index):
     #index -1 since the index of the choice2prompt is of range len(chrome_window + 1)
     #del/close the tab of the window
-    del chrome_window[index - 1]
+    del chrome_window[index]
 
 
 
@@ -86,8 +89,19 @@ def ChoiceMenu():
 #    def main():
         #ChoiceMenu()
 
-last_opened_tab_index = {}
+#global variable to be used in and outside the functions
+last_opened_tab_index = None
+#predefinded set of tabs
 chrome_window = [{"slack": "https://slack.com/"}, {"corsera": "https://corsera.org/"}]
+
+print(f"before adding and closing{chrome_window}")
+Choice1Prompt()
+print(f"after adding, before closing{chrome_window}")
+print(last_opened_tab_index)
+Choice2Prompt()
+print(f"after adding and closing{chrome_window}")
+
+
 
 
 
