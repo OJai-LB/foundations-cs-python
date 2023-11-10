@@ -6,6 +6,7 @@ error_messages = [
     "Try again. Pick a number from 1 to 9."
 ]
 
+#ChoiceMenu
 def InputChoiceVerifier():
     input_choice = input("Enter a choice number: ")
     if input_choice.isdigit() and 1 <= int(input_choice) <= 9:
@@ -27,6 +28,7 @@ def Choice1OpenTab(title, url):
     #last opened tab used in many other functions, it is the last opened tab
     chrome_window.append({title: url})
     global last_opened_tab_index
+    #.index method learnt from Corsera(Python3(UniversityOfMichigan))
     last_opened_tab_index = chrome_window.index({title: url})
     return
 
@@ -90,6 +92,7 @@ def ChoiceMenu():
         #ChoiceMenu()
 
 #global variable to be used in and outside the functions
+#global and local knowlege from Corsera(Python3(UniversityOfMichigan))
 last_opened_tab_index = None
 #predefinded set of tabs
 chrome_window = [{"slack": "https://slack.com/"}, {"corsera": "https://corsera.org/"}]
