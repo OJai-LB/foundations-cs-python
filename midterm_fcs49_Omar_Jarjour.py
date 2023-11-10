@@ -35,9 +35,11 @@ def Choice1Prompt():
 def OpenTabChoice1(title, url):
     #last opened tab used in many other functions, it is the last opened tab
     chrome_window.append({title: url})
+    print("Tab Opened Successfully!")
     global last_opened_tab_index
     #.index method learnt from Corsera(Python3(UniversityOfMichigan))
     last_opened_tab_index = chrome_window.index({title: url})
+
 
 #CH1
 def UrlVerifier():
@@ -91,6 +93,7 @@ def CloseTabChoice2(index):
     #index -1 since the index of the choice2prompt is of range len(chrome_window + 1)
     #del/close the tab of the window
     del chrome_window[index]
+    print(f"Tab {index} closed.")
 
 
 
@@ -134,10 +137,13 @@ def ChoiceMenu():
             break
         elif input_choice == 1:
             Choice1Prompt()
-        #elif input_choice == 2:
+        elif input_choice == 2:
+            Choice2Prompt()
+        elif input_choice == 3:
+            Choice3Prompt()
 
-#    def main():
-        #ChoiceMenu()
+def main():
+    ChoiceMenu()
 
 #global variable to be used in and outside the functions
 #global and local knowlege from Corsera(Python3(UniversityOfMichigan))
@@ -145,9 +151,8 @@ last_opened_tab_index = None
 #predefinded set of tabs
 chrome_window = [{"se": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
 
+main()
 
-
-Choice3Prompt()
 
 
 
