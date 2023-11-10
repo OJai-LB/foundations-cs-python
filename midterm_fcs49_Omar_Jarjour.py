@@ -29,10 +29,10 @@ def InputChoiceVerifier():
 def Choice1Prompt():
     title = input("Website Title: ")
     url = UrlVerifier()
-    return Choice1OpenTab(title, url)
+    return OpenTabChoice1(title, url)
 #CH1
 
-def Choice1OpenTab(title, url):
+def OpenTabChoice1(title, url):
     #last opened tab used in many other functions, it is the last opened tab
     chrome_window.append({title: url})
     global last_opened_tab_index
@@ -85,10 +85,10 @@ def Choice2Prompt():
     for tab_index in range(1, len(chrome_window) + 1):
         print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
-    return Choice2CloseTab(index)
+    return CloseTabChoice2(index)
 
 #CH2
-def Choice2CloseTab(index):
+def CloseTabChoice2(index):
     #index -1 since the index of the choice2prompt is of range len(chrome_window + 1)
     #del/close the tab of the window
     del chrome_window[index]
@@ -98,10 +98,17 @@ def Choice2CloseTab(index):
 
 
 
-def Choice3Prompt():
+#CH3
+def ChosenIndex():
+    for tab_index in range(1, len(chrome_window) + 1):
+        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
-
-
+    return SwitchTabChoice3(index)
+#CH3
+def SwitchTabChoice3(index):
+    url = chrome_window[index].values()
+    response = requests.get(url)
+    html = response.text
 
 def ChoiceMenu():
     print("""
