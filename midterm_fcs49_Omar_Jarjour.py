@@ -38,7 +38,6 @@ def OpenTabChoice1(title, url):
     global last_opened_tab_index
     #.index method learnt from Corsera(Python3(UniversityOfMichigan))
     last_opened_tab_index = chrome_window.index({title: url})
-    return
 
 #CH1
 def UrlVerifier():
@@ -99,16 +98,20 @@ def CloseTabChoice2(index):
 
 
 #CH3
-def ChosenIndex():
+def Choice3Prompt():
     for tab_index in range(1, len(chrome_window) + 1):
         print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
     return SwitchTabChoice3(index)
 #CH3
 def SwitchTabChoice3(index):
-    url = chrome_window[index].values()
+    #getting the url of the tab, from the dict of index
+    url = list(chrome_window[index].values())[0]
     response = requests.get(url)
     html = response.text
+    print(html)
+
+
 
 def ChoiceMenu():
     print("""
@@ -142,14 +145,9 @@ last_opened_tab_index = None
 #predefinded set of tabs
 chrome_window = [{"se": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
 
-print(f"before adding and closing{chrome_window}")
-Choice1Prompt()
-print(f"after adding, before closing{chrome_window}")
-print(last_opened_tab_index)
-Choice2Prompt()
-print(f"after adding and closing{chrome_window}")
 
 
+Choice3Prompt()
 
 
 
