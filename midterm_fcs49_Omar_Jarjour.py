@@ -1,4 +1,7 @@
 import random
+import requests
+
+
 #1 Learned this method when doing assignment_03 using an ai tool
 error_messages = [
     "You had one job, choose a number from 1 to 9!!",
@@ -18,12 +21,16 @@ def InputChoiceVerifier():
 
 
 
+
+
 #CH1
+
 def Choice1Prompt():
     title = input("Website Title: ")
     url = UrlVerifier()
     return Choice1OpenTab(title, url)
 #CH1
+
 def Choice1OpenTab(title, url):
     #last opened tab used in many other functions, it is the last opened tab
     chrome_window.append({title: url})
@@ -35,12 +42,26 @@ def Choice1OpenTab(title, url):
 #CH1
 def UrlVerifier():
     url_string_input = input("Website URL: ")
-    if url_string_input[0:8] == "https://" or url_string_input[0:7] == "http://":
-        print("Valid URL")
+    while True:
+        if url_string_input[:8] == "https://" or url_string_input[:7] == "http://":
+            break
+        else:
+            print("Make sure you are entering a valid URL!! \n\t Try again..")
+            return UrlVerifier()
+    response = requests.get(url_string_input)
+    if 200 <= response.status_code < 300:
         return url_string_input
     else:
         print("The URL provided isn't valid,\n\t Try again.. ")
         return UrlVerifier()
+
+
+
+
+
+
+
+#CH2,3
 def IndexVerifier():
     input_index = input("Choose Index: ")
     if input_index.isdigit():
@@ -50,18 +71,26 @@ def IndexVerifier():
     else:
         return IndexVerifier()
 
+#CH2
 def Choice2Prompt():
     for tab_index in range(1, len(chrome_window) + 1):
         print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
     return Choice2CloseTab(index)
 
+#CH2
 def Choice2CloseTab(index):
     #index -1 since the index of the choice2prompt is of range len(chrome_window + 1)
     #del/close the tab of the window
     del chrome_window[index]
 
 
+
+
+
+
+def Choice3Prompt():
+    index = IndexVerifier()
 
 
 
@@ -95,7 +124,7 @@ def ChoiceMenu():
 #global and local knowlege from Corsera(Python3(UniversityOfMichigan))
 last_opened_tab_index = None
 #predefinded set of tabs
-chrome_window = [{"slack": "https://slack.com/"}, {"corsera": "https://corsera.org/"}]
+chrome_window = [{"se": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
 
 print(f"before adding and closing{chrome_window}")
 Choice1Prompt()
