@@ -40,7 +40,6 @@ def OpenTabChoice1(title, url):
     #.index method learnt from Corsera(Python3(UniversityOfMichigan))
     last_opened_tab_index = chrome_window.index({title: url})
 
-
 #CH1
 def UrlVerifier():
     url_string_input = input("Website URL: ")
@@ -130,9 +129,10 @@ def ChoiceMenu():
     8.Import Tabs
     9. Exit    
     """)
-    input_choice = InputChoiceVerifier()
-    #loops until returning or breaking, learned using ai tool doing assignments
     while True:
+        input_choice = InputChoiceVerifier()
+        #loops until returning or breaking, learned using ai tool doing assignments
+
         if input_choice == 9:
             break
         elif input_choice == 1:
@@ -152,7 +152,7 @@ last_opened_tab_index = None
 chrome_window = [{"se": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
 
 main()
-
+Choice1Prompt()
 
 
 
