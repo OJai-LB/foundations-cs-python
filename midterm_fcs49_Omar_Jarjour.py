@@ -1,6 +1,8 @@
 import random
 #the requests thingy learned from various youtube videos, download the libary via cmd pip requests install
 import requests
+#reference: https://stackoverflow.com/questions/66653796/save-json-file-to-specific-folder-with-python
+import json
 
 
 #1 Learned this method when doing assignment_03 using an ai tool
@@ -194,8 +196,23 @@ def ClearTabsChoice6():
         print("Tabs already cleared.")
         return
     for tab in range(len(chrome_window) - 1):
+        #function learned from Corsera(Python3(UniversityOfMichigan))
         chrome_window.clear()
         print("All tabs are cleared off the window!")
+
+
+
+
+
+
+
+#CH7
+#reference: https://stackoverflow.com/questions/66653796/save-json-file-to-specific-folder-with-python
+def StoreInFileChoice7():
+    directory = input("Enter the file path: ")
+    with open(directory, "w+") as f:
+        json.dump(chrome_window, f)
+
 
 
 
@@ -215,8 +232,9 @@ def ChoiceMenu():
     5. Open Nested Tabs
     6. Clear All Tabs
     7. Save Tabs
-    8.Import Tabs
+    8. Import Tabs
     9. Exit    
+    
     """)
     while True:
         input_choice = InputChoiceVerifier()
@@ -236,6 +254,8 @@ def ChoiceMenu():
             Choice5Prompt()
         elif input_choice == 6:
             ClearTabsChoice6()
+        elif input_choice == 7:
+            StoreInFileChoice7()
 
 
 def main():
@@ -245,7 +265,7 @@ def main():
 #global and local knowlege from Corsera(Python3(UniversityOfMichigan))
 last_opened_tab_index = None
 #predefinded set of tabs
-chrome_window = [{"se": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
+chrome_window = [{"se": "https://www.sefactory.io/", "fsd": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
 
 main()
 Choice1Prompt()
