@@ -189,8 +189,11 @@ def OpenNestedTabChoice5(index, title, url):
 
 
 #CH6
-def ClearTabsChoice6():
-    for tab in chrome_window:
+def ClearTabsChoice6()
+    if len(chrome_window) == 0:
+        print("Tabs already cleared.")
+        return
+    for tab in range(len(chrome_window) - 1):
         del chrome_window[tab]
 
 
@@ -230,6 +233,8 @@ def ChoiceMenu():
             PrintTitlesChoice4()
         elif input_choice == 5:
             Choice5Prompt()
+        elif input_choice == 6:
+            ClearTabsChoice6()
 
 
 def main():
