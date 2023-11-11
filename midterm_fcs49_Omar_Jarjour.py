@@ -151,17 +151,19 @@ def Choice5Prompt():
 
 #CH5
 def NestTabChoice5(index):
+    title = input("Nested Website title:")
     while True:
-        title = input("Nested Website title:")
         if title in chrome_window[index]:
             print("The title already exists! \n\t Modify and Try again..")
+            title = input("Nested Website title:")
         else:
             break
+    url = UrlVerifier()
     while True:
-        url = UrlVerifier()
         for tab in chrome_window[index]:
             if chrome_window[index][tab] == url:
                 print("The URL entered is already added to a tab \n\t Modify and Try again..")
+                url = UrlVerifier()
             else:
                 break
 
@@ -211,6 +213,8 @@ def ChoiceMenu():
             Choice3Prompt()
         elif input_choice == 4:
             PrintTitlesChoice4()
+        elif input_choice == 5:
+            Choice5Prompt()
 
 
 def main():
