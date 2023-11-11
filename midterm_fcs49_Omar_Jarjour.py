@@ -131,10 +131,10 @@ def PrintTitlesChoice4():
             #sorted method and lambda learned from Corsera Python3 course
             sorted_nested_list = (sorted(tab.items(), key=lambda item: item[1]))
             #prints the parent that has the smallest url
-            print(sorted_nested_list[0])
+            print(sorted_nested_list[0][0])
             #prints the other tabs accordingly
             for nested in sorted_nested_list[1:]:
-                print(f"\n\t{nested[0]}")
+                print(f"\t{nested[0]}")
 
 
 
