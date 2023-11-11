@@ -45,14 +45,6 @@ def OpenTabChoice1(title, url):
 #CH1
 def UrlVerifier():
     url_string_input = input("Website URL: ")
-    #verifying of the string it self for some chars criteria
-    while True:
-        if url_string_input[:8] == "https://" or url_string_input[:7] == "http://":
-            break
-        else:
-            print("Make sure you are entering a valid URL!! \n\t Try again..")
-            return UrlVerifier()
-
     #reference of try except and the exception thingy: https://stackoverflow.com/questions/16511337/correct-way-to-try-except-using-python-requests-module
     #but edited it abit
     try:
@@ -275,7 +267,7 @@ def ChoiceMenu():
 #global and local knowlege from Corsera(Python3(UniversityOfMichigan))
 last_opened_tab_index = None
 #predefinded set of tabs
-chrome_window = [{"se": "https://www.sefactory.io/", "fsd": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
+chrome_window = []
 
 ChoiceMenu()
 
