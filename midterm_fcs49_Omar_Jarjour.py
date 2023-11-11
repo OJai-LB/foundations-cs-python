@@ -165,8 +165,17 @@ def NestTabChoice5(index):
             else:
                 break
 
+    OpenNestedTabChoice5(index, title, url)
 
-
+#CH5
+#opens a new tab that is nested
+def OpenNestedTabChoice5(index, title, url):
+    #last opened tab used in many other functions, it is the last opened tab
+    chrome_window[index].update({title: url})
+    print("Tab Opened Successfully!")
+    global last_opened_tab_index
+    #.index method learnt from Corsera(Python3(UniversityOfMichigan))
+    last_opened_tab_index = chrome_window.index({title: url})
 
 
 
