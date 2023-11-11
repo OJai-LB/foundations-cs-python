@@ -145,7 +145,7 @@ def ChoiceMenu():
 def main():
     ChoiceMenu()
 
-#global variable to be used in and outside the functions
+#global variable to be used in and outside the functions.
 #global and local knowlege from Corsera(Python3(UniversityOfMichigan))
 last_opened_tab_index = None
 #predefinded set of tabs
