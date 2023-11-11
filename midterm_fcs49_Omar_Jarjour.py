@@ -189,7 +189,7 @@ def OpenNestedTabChoice5(index, title, url):
 
 
 #CH6
-def ClearTabsChoice6()
+def ClearTabsChoice6():
     if len(chrome_window) == 0:
         print("Tabs already cleared.")
         return
