@@ -160,12 +160,12 @@ def NestTabChoice5(index):
             break
     url = UrlVerifier()
     while True:
-        for tab in chrome_window[index]:
-            if chrome_window[index][tab] == url:
+        for nested_tab in chrome_window[index]:
+            if chrome_window[index][nested_tab] == url:
                 print("The URL entered is already added to a tab \n\t Modify and Try again..")
                 url = UrlVerifier()
-            else:
-                break
+        print(f"Exited the loop {url}")
+        break
 
     OpenNestedTabChoice5(index, title, url)
 
@@ -176,8 +176,7 @@ def OpenNestedTabChoice5(index, title, url):
     chrome_window[index].update({title: url})
     print("Tab Opened Successfully!")
     global last_opened_tab_index
-    #.index method learnt from Corsera(Python3(UniversityOfMichigan))
-    last_opened_tab_index = chrome_window.index({title: url})
+    last_opened_tab_index = index
 
 
 
