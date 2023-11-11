@@ -212,6 +212,16 @@ def StoreInFileChoice7():
     directory = input("Enter the file path: ")
     with open(directory, "w+") as f:
         json.dump(chrome_window, f)
+    print("Window of tabs stored successfully!!")
+
+
+
+
+
+def LoadFromFileChoice8():
+    directory = input("Enter the file path: ")
+    with open(directory, "w+") as f:
+        json.load(chrome_window, f)
 
 
 
@@ -256,6 +266,8 @@ def ChoiceMenu():
             ClearTabsChoice6()
         elif input_choice == 7:
             StoreInFileChoice7()
+        elif input_choice == 8:
+            LoadFromFileChoice8()
 
 
 def main():
