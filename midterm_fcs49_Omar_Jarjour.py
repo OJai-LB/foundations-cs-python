@@ -82,6 +82,9 @@ def IndexVerifier():
 
 #CH2
 def Choice2Prompt():
+    if len(chrome_window) == 0:
+        print("The window has no tabs opened.")
+        return
     for tab_index in range(1, len(chrome_window) + 1):
         print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
@@ -176,6 +179,20 @@ def OpenNestedTabChoice5(index, title, url):
     print("Tab Opened Successfully!")
     global last_opened_tab_index
     last_opened_tab_index = index
+
+
+
+
+
+
+
+
+
+#CH6
+def ClearTabsChoice6():
+    for tab in chrome_window:
+        del chrome_window[tab]
+
 
 
 
