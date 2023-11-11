@@ -115,6 +115,65 @@ def SwitchTabChoice3(index):
 
 
 
+
+
+
+
+#CH4
+def PrintTitlesChoice4():
+    if len(chrome_window) == 0:
+        print("No open tabs are available")
+    for tab in chrome_window:
+        if len(tab) == 1:
+            print(list(tab.keys())[0])
+        else:
+            #technically speaking, the parent tab is the shortest one since the url is the base url
+            #sorted method and lambda learned from Corsera Python3 course
+            sorted_nested_list = (sorted(tab.items(), key=lambda item: item[1]))
+            #prints the parent that has the smallest url
+            print(sorted_nested_list[0])
+            #prints the other tabs accordingly
+            for nested in sorted_nested_list[1:]:
+                print(f"\n{nested[0]}")
+
+
+
+
+
+
+
+#Ch5
+def Choice5Prompt():
+    for tab_index in range(1, len(chrome_window) + 1):
+        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
+    index = IndexVerifier()
+    return NestTabChoice5(index)
+
+#CH5
+def NestTabChoice5(index):
+    while True:
+        title = input("Nested Website title:")
+        if title in chrome_window[index]:
+            print("The title already exists! \n\t Modify and Try again..")
+        else:
+            break
+    while True:
+        url = UrlVerifier()
+        for tab in chrome_window[index]:
+            if chrome_window[index][tab] == url:
+                print("The URL entered is already added to a tab \n\t Modify and Try again..")
+            else:
+                break
+
+
+
+
+
+
+
+
+
+
 def ChoiceMenu():
     print("""
     Greetings!!
@@ -141,6 +200,9 @@ def ChoiceMenu():
             Choice2Prompt()
         elif input_choice == 3:
             Choice3Prompt()
+        elif input_choice == 4:
+            PrintTitlesChoice4()
+
 
 def main():
     ChoiceMenu()
