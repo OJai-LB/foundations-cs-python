@@ -134,7 +134,7 @@ def PrintTitlesChoice4():
             print(sorted_nested_list[0])
             #prints the other tabs accordingly
             for nested in sorted_nested_list[1:]:
-                print(f"\n{nested[0]}")
+                print(f"\n\t{nested[0]}")
 
 
 
@@ -164,7 +164,6 @@ def NestTabChoice5(index):
             if chrome_window[index][nested_tab] == url:
                 print("The URL entered is already added to a tab \n\t Modify and Try again..")
                 url = UrlVerifier()
-        print(f"Exited the loop {url}")
         break
 
     OpenNestedTabChoice5(index, title, url)
