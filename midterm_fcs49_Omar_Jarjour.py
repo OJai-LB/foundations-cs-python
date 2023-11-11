@@ -270,8 +270,6 @@ def ChoiceMenu():
             LoadFromFileChoice8()
 
 
-def main():
-    ChoiceMenu()
 
 #global variable to be used in and outside the functions.
 #global and local knowlege from Corsera(Python3(UniversityOfMichigan))
@@ -279,8 +277,7 @@ last_opened_tab_index = None
 #predefinded set of tabs
 chrome_window = [{"se": "https://www.sefactory.io/", "fsd": "https://www.sefactory.io/"}, {"corsera": "https://www.coursera.org/"}]
 
-main()
-Choice1Prompt()
+ChoiceMenu()
 
 
 
