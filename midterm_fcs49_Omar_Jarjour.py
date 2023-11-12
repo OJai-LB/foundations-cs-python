@@ -99,8 +99,6 @@ def CloseTabChoice2(index):
 
 #CH3
 def Choice3Prompt():
-    for tab_index in range(1, len(chrome_window) + 1):
-        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
     return SwitchTabChoice3(index)
 #CH3
