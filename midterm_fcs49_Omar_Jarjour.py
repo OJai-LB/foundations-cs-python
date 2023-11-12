@@ -66,6 +66,8 @@ def UrlVerifier():
 
 #CH2,3
 def IndexVerifier():
+    for tab_index in range(1, len(chrome_window) + 1):
+        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     input_index = input("Choose Index: ")
     if input_index.isdigit() and 0 <= int(input_index) <= (len(chrome_window)-1):
         return int(input_index)
@@ -80,8 +82,6 @@ def Choice2Prompt():
     if len(chrome_window) == 0:
         print("The window has no tabs opened.")
         return
-    for tab_index in range(1, len(chrome_window) + 1):
-        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
     return CloseTabChoice2(index)
 
