@@ -140,8 +140,6 @@ def PrintTitlesChoice4():
 
 #Ch5
 def Choice5Prompt():
-    for tab_index in range(1, len(chrome_window) + 1):
-        print(f"{tab_index - 1}:{chrome_window[tab_index - 1]}")
     index = IndexVerifier()
     return NestTabChoice5(index)
 
