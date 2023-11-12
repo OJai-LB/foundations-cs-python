@@ -74,7 +74,7 @@ def IndexVerifier():
     elif input_index == "":
         return last_opened_tab_index
     else:
-        print("Invalid Index \n\t Try again..")
+        print("Invalid Index \n\t Try again..\n Choose Index:")
         return IndexVerifier()
 
 #CH2
