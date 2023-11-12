@@ -184,10 +184,8 @@ def ClearTabsChoice6():
     if len(chrome_window) == 0:
         print("Tabs already cleared.")
         return
-    for tab in range(len(chrome_window) - 1):
-        #function learned from Corsera(Python3(UniversityOfMichigan))
-        chrome_window.clear()
-        print("All tabs are cleared off the window!")
+    chrome_window.clear()
+    print("All tabs are cleared off the window!")
 
 
 
