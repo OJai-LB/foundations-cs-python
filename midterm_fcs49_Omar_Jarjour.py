@@ -67,11 +67,12 @@ def UrlVerifier():
 #CH2,3
 def IndexVerifier():
     input_index = input("Choose Index: ")
-    if input_index.isdigit():
+    if input_index.isdigit() and 0 <= int(input_index) <= (len(chrome_window)-1):
         return int(input_index)
     elif input_index == "":
         return last_opened_tab_index
     else:
+        print("Invalid Index \n\t Try again..")
         return IndexVerifier()
 
 #CH2
